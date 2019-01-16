@@ -2,13 +2,12 @@ Flask==0.10.1
 Jinja2==2.7.2
 MarkupSafe==0.21
 Werkzeug==0.9.4
-gevent==1.0
-greenlet==0.4.2
+gevent
+greenlet
 itsdangerous==0.24
-locustio==0.7.0
+locustio==0.9.0
 msgpack-python==0.3.0
-pyzmq==14.2.0
-requests==2.2.1
-wsgiref==0.1.2
+pyzmq
+requests
 mock==1.0.1
 

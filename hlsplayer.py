@@ -3,8 +3,8 @@ import gevent
 import time
 from locust import events, Locust
 
-import hlslocust.hlserror as hlserror
-import hlslocust.hlsobject as hlsobject
+import hlserror as hlserror
+import hlsobject as hlsobject
 
 BUFFERTIME = 10.0 # time to wait before playing
 MAXRETRIES = 2

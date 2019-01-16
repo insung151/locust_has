@@ -1,10 +1,10 @@
 import requests
-import urlparse
+from urllib.parse import urljoin
 import time
 from locust import events
 
-import hlslocust.cast as cast
-import hlslocust.hlserror as hlserror
+import cast as cast
+import hlserror as hlserror
 
 class HLSObject(object):
     def request(self, name=None):
@@ -66,7 +66,7 @@ class MasterPlaylist(HLSObject):
                 key,val = line.split(':')
                 attr = cast.my_cast(val)
                 name = lines[i+1].rstrip() # next line
-                url = urlparse.urljoin(self.url, name) # construct absolute url
+                url = urljoin(self.url, name) # construct absolute url
                 self.media_playlists.append(MediaPlaylist(name,url,attr))
             elif line.startswith('#EXT-X-'):
                 try:
@@ -107,7 +107,7 @@ class MediaPlaylist(HLSObject):
                     # TODO, bit of a hack here. Some manifests put an attribute
                     # line on the first fragment which breaks this.
                     if ms_counter > self.last_media_sequence():
-                        url = urlparse.urljoin(self.url, name) # construct absolute url
+                        url = urljoin(self.url, name) # construct absolute url
                         self.media_fragments.append(MediaFragment(name,
                                                                   url,
                                                                   attr,
